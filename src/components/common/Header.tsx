@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 import Container from './Container'
 import { Menu, X } from 'lucide-react'
@@ -17,26 +18,34 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header style={{ backgroundColor: '#16122B' }} className="sticky top-0 z-50 shadow-sm border-b" style={{ borderBottomColor: '#662D91' }}>
+    <header 
+      style={{ backgroundColor: '#16122B', borderBottomColor: '#662D91' }} 
+      className="sticky top-0 z-50 shadow-lg border-b"
+    >
       <Container>
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 font-sans text-2xl font-bold">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center text-white" style={{ background: 'linear-gradient(135deg, #FCEE21 0%, #662D91 100%)' }}>
-              W
-            </div>
-            <span style={{ color: '#FCEE21' }}>
-              Wellness<span style={{ color: '#FCEE21' }}>Real</span>
-            </span>
+        <div className="flex items-center justify-between h-24 md:h-28">
+          {/* Logo - MUCHO MÁS GRANDE */}
+          <Link href="/" className="flex items-center">
+<Link href="/" className="flex items-center">
+  <Image
+    src="/images/logos/WR_AUX_normal_bg.png"
+    alt="WellnessReal Logo"
+    width={300}
+    height={90}
+    priority
+    className="object-contain"
+  />
+</Link>
+
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-8">
             {navigationItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
+                className="text-base font-medium text-gray-300 hover:text-white transition-colors tracking-wide"
               >
                 {item.label}
               </Link>
@@ -44,10 +53,10 @@ export default function Header() {
           </nav>
 
           {/* CTA Desktop */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <Link
               href="/contacto"
-              className="inline-flex items-center justify-center px-6 py-2 rounded-lg font-bold transition-all"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-bold transition-all tracking-wide text-base"
               style={{ backgroundColor: '#FCEE21', color: '#16122B' }}
             >
               Primera sesión gratis
@@ -57,23 +66,26 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-opacity-20"
+            className="lg:hidden p-2 rounded-lg hover:bg-opacity-20"
             style={{ color: '#FCEE21' }}
             aria-label="Toggle menu"
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="md:hidden py-4 border-t" style={{ borderTopColor: '#662D91' }}>
+          <nav 
+            className="lg:hidden py-4 border-t" 
+            style={{ borderTopColor: '#662D91', backgroundColor: '#16122B' }}
+          >
             <div className="flex flex-col gap-4">
               {navigationItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-base font-medium text-gray-300 hover:text-white"
+                  className="text-lg font-medium text-gray-300 hover:text-white tracking-wide"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
@@ -81,7 +93,7 @@ export default function Header() {
               ))}
               <Link
                 href="/contacto"
-                className="inline-flex items-center justify-center px-6 py-2 rounded-lg font-bold transition-all mt-2"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-bold transition-all mt-2 tracking-wide text-base"
                 style={{ backgroundColor: '#FCEE21', color: '#16122B' }}
                 onClick={() => setIsMenuOpen(false)}
               >

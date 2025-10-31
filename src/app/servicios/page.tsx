@@ -9,7 +9,6 @@ const services = [
     title: 'Entrenamiento Personalizado',
     slug: 'entrenamiento-personalizado',
     description: 'Planes de ejercicio diseñados específicamente para ti',
-    longDescription: 'Cada plan de entrenamiento es único. Analizamos tu nivel actual, tus objetivos y tu disponibilidad para crear un programa que te mantenga motivado y comprometido.',
     icon: '💪',
     features: [
       'Evaluación inicial completa',
@@ -26,7 +25,6 @@ const services = [
     title: 'Nutrición Avanzada',
     slug: 'nutricion',
     description: 'Planes nutricionales basados en análisis profundo',
-    longDescription: 'No creemos en dietas genéricas. Nuestros nutricionistas analizan tu metabolismo, preferencias y objetivos para crear un plan sostenible.',
     icon: '🥗',
     features: [
       'Análisis nutricional',
@@ -43,7 +41,6 @@ const services = [
     title: 'Osteopatía',
     slug: 'osteopatia',
     description: 'Recuperación y prevención de lesiones',
-    longDescription: 'Técnicas especializadas de osteopatía para recuperación, prevención de lesiones y optimización del rendimiento físico.',
     icon: '🧘',
     features: [
       'Evaluación postural',
