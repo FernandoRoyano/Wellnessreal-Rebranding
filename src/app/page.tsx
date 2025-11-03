@@ -6,91 +6,254 @@ import Button from '@/components/ui/Button'
 export default function HomePage() {
   return (
     <>
-      {/* HERO PRINCIPAL */}
-      <section className="relative h-[70vh] flex items-center justify-center" style={{ backgroundColor: '#16122B' }}>
+      {/* HERO ULTRA POTENTE */}
+      <section className="relative h-[80vh] flex items-center justify-center bg-[#16122B]">
         <Image
           src="/images/portada-WR.jpg"
-          alt="Entrena con Wellness Real"
+          alt="Entrenamiento Online WellnessReal"
           fill
-          className="object-cover object-center opacity-60"
+          className="object-cover object-center opacity-50"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#16122B]/80 to-[#662D91]/70 z-0"></div>
-        <div className="absolute inset-0 flex flex-col items-center justify-center z-10 px-4">
-          <h1 className="text-4xl md:text-6xl font-extrabold gradient-text drop-shadow-lg text-center mb-6 animate-fadeInUp">
-            El movimiento es vida.<br />Convierte el cambio en tu nuevo hábito.
+        <div className="absolute inset-0 bg-gradient-to-b from-[#16122B]/90 to-[#662D91]/80 z-0"></div>
+        <div className="absolute inset-0 flex flex-col items-center justify-center z-10 px-4 text-center">
+          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 gradient-text leading-tight">
+            TU ENTRENADOR PERSONAL<br/>EN TU BOLSILLO
           </h1>
-          <p className="text-xl md:text-2xl text-white mb-8 text-center animate-fadeInUp max-w-2xl">
-            WellnessReal – Entrenamiento personalizado, nutrición y bienestar integral.
-            <span className="block mt-2 font-bold" style={{ color: '#FCEE21' }}>Primera sesión gratuita</span>
+          <p className="text-2xl md:text-3xl text-white mb-4 max-w-3xl font-semibold">
+            Entrena donde quieras, cuando quieras.<br/>
+            <span style={{ color: '#FCEE21' }} className="font-extrabold">Con app profesional, seguimiento real y resultados garantizados.</span>
           </p>
-          <Link href="/contacto" className="mt-2 animate-fadeInUp">
-            <Button size="xl" variant="primary">
-              Quiero mi primera sesión gratis
-            </Button>
+          <p className="text-lg text-gray-300 mb-10 max-w-2xl">
+            Sin horarios fijos. Sin desplazamientos. Solo tú, tu objetivo y mi método probado.
+          </p>
+          <Link href="/contacto">
+            <button className="px-10 py-5 rounded-full bg-[#FCEE21] text-[#16122B] text-2xl font-extrabold shadow-xl hover:scale-105 transition-all duration-200">
+              QUIERO MI PRIMERA SESIÓN GRATIS
+            </button>
           </Link>
         </div>
       </section>
 
-      {/* SECCIÓN: Servicios principales */}
+      {/* POR QUÉ ENTRENAMIENTO ONLINE */}
       <section style={{ backgroundColor: '#1a1535' }} className="py-24">
         <Container>
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16" style={{ color: '#FCEE21' }}>
-            Nuestros Servicios
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">
+            ¿Por qué entrenar online conmigo?
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-10">
             {[
               {
+                icon: '📱',
+                title: 'App profesional exclusiva',
+                desc: 'Recibes tu plan en una app móvil súper intuitiva. Entrena con vídeos, tracking automático y soporte directo desde tu móvil.'
+              },
+              {
+                icon: '🎯',
+                title: '100% Personalizado',
+                desc: 'Tu plan se adapta a TU espacio, TU material, TU nivel y TUS objetivos. Nada de rutinas genéricas.'
+              },
+              {
+                icon: '📊',
+                title: 'Seguimiento real cada semana',
+                desc: 'Análisis de tu progreso, ajustes constantes y feedback profesional. No estás solo: estoy contigo en cada paso.'
+              },
+              {
                 icon: '💪',
-                title: 'Entrenamiento Personalizado',
-                desc: 'Planes de ejercicio adaptados a ti, con seguimiento profesional y enfoque en resultados reales.',
-                link: '/servicios/entrenamiento-personalizado'
+                title: 'Resultados comprobados',
+                desc: 'Método basado en ciencia, experiencia real con +100 clientes y transformaciones documentadas.'
               },
               {
-                icon: '🥗',
-                title: 'Nutrición y Hábitos',
-                desc: 'Planificación nutricional científica, asesoría y acompañamiento para transformar tu relación con la comida.',
-                link: '/servicios/nutricion'
+                icon: '⏰',
+                title: 'Entrena a tu ritmo',
+                desc: 'Sin horarios fijos ni citas obligatorias. Tú decides cuándo y dónde entrenar. Yo te guío siempre.'
               },
               {
-                icon: '🧘',
-                title: 'Osteopatía y Recuperación',
-                desc: 'Recuperación de lesiones, prevención y estrategias globales de salud, integradas con tu entrenamiento.',
-                link: '/servicios/osteopatia'
+                icon: '💰',
+                title: 'Mejor precio que presencial',
+                desc: 'Servicio profesional de élite por una fracción del coste del entrenamiento presencial tradicional.'
               }
-            ].map((s, i) => (
-              <Link href={s.link} key={i} className="hover-lift group">
-                <div className="p-10 bg-[#16122B] rounded-xl border border-[#662D91] text-center h-full">
-                  <div className="text-6xl mb-4">{s.icon}</div>
-                  <h3 className="text-2xl font-bold mb-3" style={{ color: '#FCEE21' }}>{s.title}</h3>
-                  <p className="text-gray-300 mb-6 min-h-[70px]">{s.desc}</p>
-                  <div className="inline-block mt-2 font-bold text-[#FCEE21] group-hover:underline transition">Saber más</div>
-                </div>
-              </Link>
+            ].map((item, i) => (
+              <div key={i} className="p-8 rounded-xl bg-[#16122B] border-2 border-[#662D91] text-center hover-lift">
+                <div className="text-6xl mb-4">{item.icon}</div>
+                <h3 className="text-2xl font-bold mb-3" style={{ color: '#FCEE21' }}>{item.title}</h3>
+                <p className="text-gray-300 text-base">{item.desc}</p>
+              </div>
             ))}
           </div>
         </Container>
       </section>
 
-      {/* SECCIÓN: CTA inspiracional */}
-      <section className="relative py-24 flex items-center justify-center" style={{ backgroundColor: '#16122B' }}>
+      {/* CÓMO FUNCIONA */}
+      <section className="py-24 bg-[#16122B]">
+        <Container>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16" style={{ color: '#FCEE21' }}>
+            Cómo funciona (es muy fácil)
+          </h2>
+          <div className="max-w-4xl mx-auto space-y-12">
+            {[
+              {
+                step: '01',
+                title: 'Hablamos y te conozco',
+                desc: 'Primera sesión GRATIS por videollamada. Analizamos tu situación, objetivos y creamos tu plan personalizado.'
+              },
+              {
+                step: '02',
+                title: 'Recibes acceso a tu app',
+                desc: 'Te envío invitación a la app móvil (iOS/Android). Descargas, entras y ¡ya tienes tu plan esperándote!'
+              },
+              {
+                step: '03',
+                title: 'Empiezas tu transformación',
+                desc: 'Sigues tu plan desde el móvil. Vídeos explicativos, ejercicios personalizados, tracking automático de progreso.'
+              },
+              {
+                step: '04',
+                title: 'Seguimiento constante',
+                desc: 'Cada semana revisamos tu evolución. Ajusto el plan según tus resultados y te doy feedback profesional.'
+              }
+            ].map((item, i) => (
+              <div key={i} className="flex gap-8 items-start">
+                <div className="flex-shrink-0 w-20 h-20 rounded-full flex items-center justify-center text-4xl font-extrabold" style={{ backgroundColor: '#FCEE21', color: '#16122B' }}>
+                  {item.step}
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold mb-3" style={{ color: '#FCEE21' }}>{item.title}</h3>
+                  <p className="text-gray-300 text-lg">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* TECNOLOGÍA PROFESIONAL */}
+      <section style={{ backgroundColor: '#1a1535' }} className="py-20">
+        <Container>
+          <div className="flex flex-col md:flex-row items-center gap-12">
+            <div className="flex-1">
+              <Image
+                src="/images/main-help-1024x1536.jpg"
+                alt="App profesional entrenamiento"
+                width={400}
+                height={500}
+                className="rounded-xl border-4 border-[#FCEE21] shadow-2xl"
+              />
+            </div>
+            <div className="flex-1">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
+                Tecnología profesional que marca la diferencia
+              </h2>
+              <p className="text-xl text-gray-300 mb-6">
+                Trabajo con la plataforma líder en entrenamiento online para ofrecerte la mejor experiencia:
+              </p>
+              <ul className="space-y-4 text-gray-200 text-lg">
+                <li className="flex items-start gap-3">
+                  <span style={{ color: '#FCEE21' }} className="text-2xl">✓</span>
+                  <span>App móvil nativa (iOS y Android) súper intuitiva</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span style={{ color: '#FCEE21' }} className="text-2xl">✓</span>
+                  <span>Vídeos explicativos de cada ejercicio</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span style={{ color: '#FCEE21' }} className="text-2xl">✓</span>
+                  <span>Tracking automático de peso, sensaciones y progreso</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span style={{ color: '#FCEE21' }} className="text-2xl">✓</span>
+                  <span>Notificaciones y recordatorios personalizados</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span style={{ color: '#FCEE21' }} className="text-2xl">✓</span>
+                  <span>Conexión directa conmigo desde la app</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* TESTIMONIOS */}
+      <section className="py-24 bg-[#16122B]">
+        <Container>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16" style={{ color: '#FCEE21' }}>
+            Lo que dicen mis clientes online
+          </h2>
+          <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+            {[
+              {
+                text: 'Nunca pensé que podría tener un entrenador personal de este nivel online. La app es brutal y Fernando siempre está pendiente de mi evolución. ¡He perdido 12kg en 4 meses!',
+                name: 'María G.',
+                result: '-12kg en 4 meses'
+              },
+              {
+                text: 'Lo mejor es la flexibilidad. Entreno cuando puedo, desde casa o el gimnasio, y tengo TODO controlado en la app. El seguimiento es mejor que cualquier presencial que probé.',
+                name: 'Carlos M.',
+                result: '+8kg músculo'
+              }
+            ].map((testimonial, i) => (
+              <div key={i} className="p-8 rounded-xl bg-[#1a1535] border-2 border-[#FCEE21] shadow-xl">
+                <p className="text-gray-200 text-lg mb-6 italic">"{testimonial.text}"</p>
+                <div className="flex items-center justify-between">
+                  <span className="font-bold text-white">{testimonial.name}</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-bold" style={{ backgroundColor: '#FCEE21', color: '#16122B' }}>
+                    {testimonial.result}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* TARIFAS RÁPIDAS */}
+      <section style={{ backgroundColor: '#1a1535' }} className="py-24">
+        <Container>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">
+            Elige tu plan
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {[
+              { name: 'STARTER', price: '120', period: '1 mes', desc: 'Prueba el método', popular: false },
+              { name: 'PACK 3 MESES', price: '300', period: '3 meses', desc: 'Ahorra €60', popular: true },
+              { name: 'PREMIUM', price: '500', period: '3 meses', desc: 'Máxima personalización', popular: false }
+            ].map((plan, i) => (
+              <div key={i} className={`p-8 rounded-xl text-center ${plan.popular ? 'border-4 scale-105' : 'border-2'} border-[#FCEE21] bg-[#16122B]`}>
+                {plan.popular && <div className="mb-3 text-sm font-bold px-3 py-1 rounded-full inline-block" style={{ backgroundColor: '#FCEE21', color: '#16122B' }}>⭐ FAVORITO</div>}
+                <h3 className="text-2xl font-bold mb-2" style={{ color: '#FCEE21' }}>{plan.name}</h3>
+                <div className="text-5xl font-extrabold mb-2" style={{ color: '#FCEE21' }}>€{plan.price}</div>
+                <p className="text-gray-400 mb-4">{plan.period}</p>
+                <p className="text-gray-300 mb-6">{plan.desc}</p>
+                <Link href="/tarifas">
+                  <Button variant="primary" size="lg" className="w-full">Ver detalles</Button>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* CTA FINAL AGRESIVO */}
+      <section className="relative py-28 flex items-center justify-center bg-[#16122B]">
         <Image
           src="/images/lifestyle.jpg"
-          alt="Inspiración Wellness"
+          alt="Transforma tu vida"
           fill
-          className="object-cover object-center opacity-40"
+          className="object-cover opacity-40"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#16122B]/95 via-[#662D91]/80 to-[#FCEE21]/10 z-1"></div>
-        <div className="relative z-10 text-center max-w-3xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">Haz realidad tu mejor versión</h2>
-          <p className="text-white text-xl mb-8">
-            El primer paso transforma tu cuerpo, mente y hábitos. 
-            <span className="block font-bold" style={{ color: '#FCEE21' }}>Empieza hoy, no mañana.</span>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#16122B]/95 via-[#662D91]/85 to-transparent z-1"></div>
+        <div className="relative z-10 text-center max-w-3xl mx-auto px-4">
+          <h2 className="text-5xl md:text-6xl font-extrabold mb-8 gradient-text">
+            Deja de posponer tu cambio
+          </h2>
+          <p className="text-2xl text-white mb-10 font-semibold">
+            Primera sesión <span style={{ color: '#FCEE21' }}>100% GRATIS</span>. Sin compromiso. Sin excusas.
           </p>
-          <Link href="/servicios">
-            <Button size="lg" variant="primary">
-              Ver todos los servicios
-            </Button>
+          <Link href="/contacto">
+            <button className="px-12 py-6 rounded-full bg-[#FCEE21] text-[#16122B] text-2xl font-extrabold shadow-2xl hover:scale-110 transition-all duration-200">
+              EMPIEZO HOY
+            </button>
           </Link>
         </div>
       </section>
