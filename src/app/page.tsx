@@ -29,7 +29,7 @@ export default function HomePage() {
           </p>
           <Link href="/contacto">
             <button className="px-10 py-5 rounded-full bg-[#FCEE21] text-[#16122B] text-2xl font-extrabold shadow-xl hover:scale-105 transition-all duration-200">
-              QUIERO MI PRIMERA SESIÓN GRATIS
+              🚀 SOLICITA TU VALORACIÓN GRATIS
             </button>
           </Link>
         </div>
@@ -94,8 +94,8 @@ export default function HomePage() {
             {[
               {
                 step: '01',
-                title: 'Hablamos y te conozco',
-                desc: 'Primera sesión GRATIS por videollamada. Analizamos tu situación, objetivos y creamos tu plan personalizado.'
+                title: 'Solicita tu valoración gratis',
+                desc: 'Valoración profesional 100% online. Analizamos tu situación, objetivos y diseñamos tu plan personalizado.'
               },
               {
                 step: '02',
@@ -133,7 +133,7 @@ export default function HomePage() {
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="flex-1">
               <Image
-                src="/images/main-help-1024x1536.jpg"
+                src="/images/wr_app_interface.png"
                 alt="App profesional entrenamiento"
                 width={400}
                 height={500}
@@ -248,11 +248,11 @@ export default function HomePage() {
             Deja de posponer tu cambio
           </h2>
           <p className="text-2xl text-white mb-10 font-semibold">
-            Primera sesión <span style={{ color: '#FCEE21' }}>100% GRATIS</span>. Sin compromiso. Sin excusas.
+            Valoración profesional <span style={{ color: '#FCEE21' }}>100% GRATIS</span>. Sin compromiso. Sin excusas.
           </p>
           <Link href="/contacto">
             <button className="px-12 py-6 rounded-full bg-[#FCEE21] text-[#16122B] text-2xl font-extrabold shadow-2xl hover:scale-110 transition-all duration-200">
-              EMPIEZO HOY
+              🚀 EMPIEZO HOY
             </button>
           </Link>
         </div>

@@ -14,10 +14,10 @@ export default function FilosofiaPage() {
               FILOSOFÍA
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-6">
-              <span style={{ color: '#FCEE21' }} className="font-bold">Wellness</span> es un sinónimo de <span style={{ color: '#FCEE21' }}>bienestar físico y emocional.</span> Es una visión global del concepto de salud.
+              <span style={{ color: '#FCEE21' }} className="font-bold">¿Cansado de postureo y teorías vacías?</span> Aquí venimos a lo que cuenta: resultados reales que se sienten y se ven.
             </p>
             <p className="text-lg text-gray-400">
-              Lo que nosotros te queremos mostrar es cómo nuestro cuerpo forma parte de un todo y funciona de forma interdependiente entre sí.
+              La “salud” de verdad es dejarse de excusas y atacar de frente lo que importa. El 80% de tu bienestar es lo que haces cada día, no lo que compras ni los likes que recibes.
             </p>
           </div>
         </Container>
@@ -31,25 +31,22 @@ export default function FilosofiaPage() {
               ¿Qué es la salud?
             </h2>
             <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-8">
-              Hoy en día existe mucha información, pero también mucha confusión en cuanto a la salud.
-              Resulta difícil discernir la información correcta de la falsa y por eso estamos nosotros aquí.
+              Hoy abunda la info y reinan las dudas. Aquí desterramos la confusión: el 80% de lo que te mata o te eleva son tus hábitos.
             </p>
-            
             <div className="p-8 rounded-xl mb-8" style={{ backgroundColor: 'rgba(252, 238, 33, 0.1)', border: '2px solid #FCEE21' }}>
               <p className="text-2xl md:text-3xl text-white font-bold text-center leading-relaxed">
-                Aproximadamente el <span style={{ color: '#FCEE21' }}>80% de los factores</span> que afectan a nuestra salud se deben a los <span style={{ color: '#FCEE21' }}>hábitos de vida</span> que llevamos
+                Si quieres salud: <span style={{ color: '#FCEE21' }}>muévete, come bien y descansa.</span> Tu círculo, tu mente y tus hábitos pueden impulsarte o hundirte. Tú eliges.
               </p>
             </div>
-
             <ul className="grid md:grid-cols-2 gap-4 text-lg text-gray-300 mb-8">
               {[
-                'Actividad física',
-                'Nutrición',
-                'Descanso',
-                'Niveles de estrés',
-                'Estado emocional',
-                'Vida social',
-                'Higiene',
+                'Actividad física (sin piedad)',
+                'Nutrición brutal',
+                'Descanso real',
+                'Control del estrés',
+                'Fuerza mental/emocional',
+                'Vida social que suma',
+                'Higiene y entorno limpio',
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-3">
                   <span style={{ color: '#FCEE21' }}>✓</span>
@@ -57,9 +54,8 @@ export default function FilosofiaPage() {
                 </li>
               ))}
             </ul>
-
             <p className="text-xl text-gray-300 leading-relaxed">
-              ¿Entiendes la importancia que tiene tu estilo de vida en tu salud?
+              ¿Listo para romper el círculo vicioso y crear tu círculo virtuoso?
             </p>
           </div>
         </Container>
@@ -73,10 +69,10 @@ export default function FilosofiaPage() {
               WellnessReal no es un producto
             </h2>
             <p className="text-2xl md:text-3xl text-white font-semibold mb-6">
-              Es una <span style={{ color: '#FCEE21' }}>filosofía de vida</span>
+              Es una <span style={{ color: '#FCEE21' }}>filosofía de acción.</span>
             </p>
             <p className="text-xl text-gray-300 leading-relaxed">
-              Queremos que tú puedas beneficiarte de todo esto, por ello te ofrecemos todo lo que necesitas para transformar tu vida y mejorar tu salud.
+              Aquí no vendemos sueños. Vendemos el sistema, la comunidad y el choque de realidad que necesitas para lograr lo que pocos logran: salud real, duradera y sin excusas.
             </p>
           </div>
         </Container>
@@ -89,27 +85,25 @@ export default function FilosofiaPage() {
             El Círculo de la Salud
           </h2>
           <p className="text-lg text-gray-300 text-center mb-16 max-w-3xl mx-auto">
-            La salud es como un circuito: se compone de diversas áreas que funcionan interconectadas. 
-            Si una de esas áreas falla, el circuito deja de funcionar por mucho que trabajes las otras, porque la conexión se rompe.
+            Aquí todo suma o todo resta. Si una pata falla, el circuito revienta. Así de simple. 
+            Entrena lo físico, lo mental y lo emocional para resultados brutales… ¡o quédate como estás!
           </p>
-
-          {/* Las 3 áreas */}
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {[
               {
                 icon: Activity,
                 title: 'Actividad Física',
-                description: 'La actividad es fundamental para el correcto funcionamiento del cuerpo. Aumenta el metabolismo, mejora nuestro sistema circulatorio y respiratorio, mantiene los niveles de estrés controlados lo que mejorará nuestro descanso y recuperación.',
+                description: 'Mueve el cuerpo o acepta quedarte atrás. Sube tu nivel: más fuerza, menos excusas.',
               },
               {
                 icon: Heart,
                 title: 'Nutrición',
-                description: 'La alimentación es el combustible que permite que tu cuerpo funcione correctamente. Una nutrición adecuada optimiza tu rendimiento físico, mental y emocional, y es clave para prevenir enfermedades.',
+                description: 'La gasolina de verdad. Si fallas aquí, fallas allá. Come para rendir y proteger tu salud.',
               },
               {
                 icon: Moon,
                 title: 'Recuperación',
-                description: 'El descanso es otra parte vital de la ecuación para mantener la salud. Solo si tu descanso es óptimo podrás rendir 100% en tu día a día.',
+                description: 'El descanso de campeones. Dormir poco = rendir menos = fracasar antes.',
               },
             ].map((item, i) => {
               const Icon = item.icon
@@ -128,13 +122,12 @@ export default function FilosofiaPage() {
               )
             })}
           </div>
-
           <div className="text-center">
             <p className="text-xl md:text-2xl text-white font-semibold mb-4">
               Las <span style={{ color: '#FCEE21' }}>3 áreas están interconectadas</span>
             </p>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-              Trabaja en las tres para lograr una transformación real y duradera
+              Trabájalas en serio o sigue como estás. Aquí no maquillamos resultados: te ayudamos a conseguirlos.
             </p>
           </div>
         </Container>
@@ -144,16 +137,24 @@ export default function FilosofiaPage() {
       <section style={{ backgroundColor: '#16122B' }} className="py-20">
         <Container className="text-center">
           <h2 style={{ color: '#FCEE21' }} className="text-4xl md:text-5xl font-bold mb-8 tracking-wide">
-            ¿Listo para transformar tu estilo de vida?
+            ¿Te atreves o vas a quedarte en la teoría?
           </h2>
           <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-            Comienza hoy con tu primera sesión gratuita
+            Empieza tu transformación ahora con la primera sesión gratuita. Sin humo, sin excusas.
           </p>
-          <Link href="/contacto">
-            <Button variant="primary" size="lg">
-              Empieza tu transformación
-            </Button>
-          </Link>
+<Link
+  href="/contacto"
+  className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-bold transition-all tracking-wide text-base"
+  style={{
+    backgroundColor: '#FCEE21',
+    color: '#16122B'
+  }}
+>
+  🚀 Empieza tu transformación
+</Link>
+
+
+
         </Container>
       </section>
     </>

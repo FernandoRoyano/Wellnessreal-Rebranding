@@ -2,6 +2,7 @@
 
 import Container from '@/components/common/Container'
 import Button from '@/components/ui/Button'
+import Link from 'next/link'
 import { Mail, Phone, MapPin, Clock, MessageCircle } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -46,8 +47,8 @@ export default function ContactoPage() {
               CONTACTO
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
-              ¿Preguntas? Estamos aquí para ayudarte.
-              <span style={{ color: '#FCEE21' }} className="font-bold"> Responderemos en menos de 24 horas.</span>
+              Hablemos de tu transformación.
+              <span style={{ color: '#FCEE21' }} className="font-bold"> Respondemos en menos de 24 horas.</span>
             </p>
           </div>
         </Container>
@@ -67,9 +68,9 @@ export default function ContactoPage() {
                   <div>
                     <h3 style={{ color: '#FCEE21' }} className="font-bold mb-2 text-lg tracking-wide">Ubicación</h3>
                     <p className="text-gray-400 text-base">
-                      San Fernando, 16
+                      Retiro
                       <br />
-                      39001 Santander, Cantabria
+                      28007 Madrid
                       <br />
                       España
                     </p>
@@ -98,7 +99,7 @@ export default function ContactoPage() {
                     <h3 style={{ color: '#FCEE21' }} className="font-bold mb-2 text-lg tracking-wide">Teléfono</h3>
                     <p className="text-gray-400">
                       <a href="tel:+34XXX" className="hover:text-white transition text-base">
-                        +34 XXX XXX XXX
+                        +34 633 261 963
                       </a>
                     </p>
                   </div>
@@ -220,7 +221,7 @@ export default function ContactoPage() {
                     size="lg"
                     className="w-full"
                   >
-                    {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
+                    {isSubmitting ? 'Enviando...' : '🚀 Enviar mensaje'}
                   </Button>
                 </div>
 
@@ -252,11 +253,11 @@ export default function ContactoPage() {
               },
               {
                 q: '¿Dónde están ubicados?',
-                a: 'Estamos en San Fernando, 16 en Santander. Contamos con espacio para entrenamientos presenciales y consultas directas.'
+                a: 'Estamos en San Fernando, 16 en Santander. Contamos con espacio para entrenamientos presenciales, osteopatía y consultas directas.'
               },
               {
                 q: '¿Hacen consultas online?',
-                a: 'Sí, ofrecemos todas nuestras consultas y entrenamientos de forma online. Es totalmente flexible y personalizado.'
+                a: 'Sí, ofrecemos valoración profesional 100% online. Todo nuestro entrenamiento es digital, flexible y personalizado.'
               },
             ].map((faq, index) => (
               <div key={index} className="p-8 rounded-xl" style={{ backgroundColor: '#1a1535', borderLeft: '4px solid #FCEE21' }}>
@@ -276,18 +277,22 @@ export default function ContactoPage() {
       <section style={{ backgroundColor: '#1a1535' }} className="py-20">
         <Container className="text-center">
           <h2 style={{ color: '#FCEE21' }} className="text-4xl md:text-5xl font-bold mb-8 tracking-wide">
-            ¿Listo para comenzar?
+            ¿Listo para transformarte?
           </h2>
-          <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-            Tu primera sesión es completamente gratis. Sin compromisos, solo resultados reales.
+          <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
+            Tu valoración profesional es completamente gratis. Sin compromisos, sin presión. Solo análisis real y propuesta personalizada.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="primary" size="lg">
-              Primera sesión gratis
-            </Button>
-            <Button variant="outline" size="lg">
-              Ver tarifas
-            </Button>
+            <Link href="/contacto">
+              <Button variant="primary" size="lg" className="px-8">
+                🚀 Solicita tu valoración gratis
+              </Button>
+            </Link>
+            <Link href="/tarifas">
+              <Button variant="outline" size="lg" className="px-8">
+                Ver tarifas
+              </Button>
+            </Link>
           </div>
         </Container>
       </section>

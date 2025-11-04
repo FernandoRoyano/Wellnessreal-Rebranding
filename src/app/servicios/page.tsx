@@ -14,7 +14,8 @@ export default function ServiciosPage() {
               SERVICIOS
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
-              Transforma tu cuerpo, mente y hábitos con mis servicios de entrenamiento y nutrición 100% online.
+              Transforma tu cuerpo, mente y hábitos con mis servicios 100% online de entrenamiento y nutrición.<br />
+              Olvida promesas vacías, aquí sólo hay resultados medibles y personalizados. Si buscas postureo, este no es tu sitio.
             </p>
           </div>
         </Container>
@@ -38,32 +39,32 @@ export default function ServiciosPage() {
                   ⭐ SERVICIO ESTRELLA
                 </div>
                 <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: '#FCEE21' }}>
-                  Entrenamiento Online Personalizado
+                  Entrenamiento Online Premium
                 </h2>
                 <p className="text-xl text-gray-300 mb-6">
-                  Tu entrenador personal en tu bolsillo. App profesional, seguimiento constante y planes 100% adaptados a ti.
+                  Tu nuevo progreso empieza con un plan personalizado en app móvil, con feedback brutal y resultados que no se pueden trucar.
                 </p>
                 <ul className="space-y-3 text-gray-200 mb-8">
                   <li className="flex items-start gap-2">
                     <span style={{ color: '#FCEE21' }}>✓</span>
-                    <span>Plan personalizado en app móvil (iOS/Android)</span>
+                    <span>Plan ultra-personalizado en app móvil (iOS/Android)</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span style={{ color: '#FCEE21' }}>✓</span>
-                    <span>Feedback semanal y ajustes continuos</span>
+                    <span>Feedback real semanal y ajustes directos</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span style={{ color: '#FCEE21' }}>✓</span>
-                    <span>Entrena donde y cuando quieras</span>
+                    <span>Entrena donde y cuando quieras, sin excusas</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span style={{ color: '#FCEE21' }}>✓</span>
-                    <span>Resultados comprobados con +100 clientes</span>
+                    <span>+100 clientes que han conseguido lo que tú quieres</span>
                   </li>
                 </ul>
                 <Link href="/servicios/entrenamiento-online">
                   <Button variant="primary" size="lg" className="w-full md:w-auto">
-                    Ver más detalles
+                    🚀 Ver detalles y valoración gratis
                   </Button>
                 </Link>
               </div>
@@ -79,41 +80,56 @@ export default function ServiciosPage() {
             Servicios Complementarios
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                icon: '🥗',
-                title: 'Nutrición Personalizada',
-                desc: 'Plan nutricional adaptado a tus objetivos, con recetas, lista de compra automática y seguimiento continuo.',
-                features: ['Plan semanal personalizado', 'Recetas y lista de la compra', 'Educación nutricional', 'Ajustes según progreso'],
-                link: '/servicios/nutricion'
-              },
-              {
-                icon: '🧘',
-                title: 'Osteopatía & Recuperación',
-                desc: 'Tratamiento de lesiones, prevención y optimización del rendimiento físico.',
-                features: ['Sesiones presenciales en Santander', 'Tratamiento de lesiones', 'Prevención y mantenimiento', 'Integrado con tu entrenamiento'],
-                link: '/servicios/osteopatia'
-              }
-            ].map((service, i) => (
-              <div key={i} className="p-10 rounded-xl bg-[#1a1535] border-2 border-[#662D91] hover-lift">
-                <div className="text-6xl mb-4">{service.icon}</div>
-                <h3 className="text-3xl font-bold mb-4" style={{ color: '#FCEE21' }}>{service.title}</h3>
-                <p className="text-gray-300 mb-6 text-lg">{service.desc}</p>
-                <ul className="space-y-2 mb-8 text-gray-300">
-                  {service.features.map((feature, j) => (
-                    <li key={j} className="flex items-start gap-2">
-                      <span style={{ color: '#FCEE21' }}>•</span>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Link href={service.link}>
-                  <Button variant="outline" size="lg" className="w-full">
-                    Más información
-                  </Button>
-                </Link>
-              </div>
-            ))}
+            {/* Nutrición */}
+            <div className="p-10 rounded-xl bg-[#1a1535] border-2 border-[#662D91] hover-lift">
+              <div className="text-6xl mb-4">🥗</div>
+              <h3 className="text-3xl font-bold mb-4" style={{ color: '#FCEE21' }}>Nutrición Personalizada</h3>
+              <p className="text-gray-300 mb-6 text-lg">
+                Deja de probar dietas que no funcionan. Aquí tienes tu estrategia nutricional realista, con recetas, lista de compra y educación para que se mantenga en el tiempo.
+              </p>
+              <ul className="space-y-2 mb-8 text-gray-300">
+                <li className="flex items-start gap-2">
+                  <span style={{ color: '#FCEE21' }}>•</span>
+                  <span>Plan semanal personalizado 100% a tu objetivo</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span style={{ color: '#FCEE21' }}>•</span>
+                  <span>Recetas y lista de compra automática</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span style={{ color: '#FCEE21' }}>•</span>
+                  <span>Educación nutricional y seguimiento continuo</span>
+                </li>
+              </ul>
+              <Link href="/servicios/nutricion">
+                <Button variant="outline" size="lg" className="w-full">
+                  Más información
+                </Button>
+              </Link>
+            </div>
+            {/* Osteopatía */}
+            <div className="p-10 rounded-xl bg-[#1a1535] border-2 border-[#662D91] hover-lift">
+              <div className="text-6xl mb-4">🧘</div>
+              <h3 className="text-3xl font-bold mb-4" style={{ color: '#FCEE21' }}>Osteopatía & Recuperación</h3>
+              <p className="text-gray-300 mb-6 text-lg">
+                Optimiza tu recuperación y ponle remedio definitivo a lesiones y molestias. Presencial en Santander para los que quieren ir al máximo nivel físico.
+              </p>
+              <ul className="space-y-2 mb-8 text-gray-300">
+                <li className="flex items-start gap-2">
+                  <span style={{ color: '#FCEE21' }}>•</span>
+                  <span>Tratamiento, prevención y mantenimiento personalizado</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span style={{ color: '#FCEE21' }}>•</span>
+                  <span>Integrado con tu entrenamiento</span>
+                </li>
+              </ul>
+              <Link href="/servicios/osteopatia">
+                <Button variant="outline" size="lg" className="w-full">
+                  Más información
+                </Button>
+              </Link>
+            </div>
           </div>
         </Container>
       </section>
@@ -122,14 +138,14 @@ export default function ServiciosPage() {
       <section style={{ backgroundColor: '#1a1535' }} className="py-20">
         <Container className="text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-8 gradient-text">
-            ¿Listo para empezar?
+            ¿Listo para empezar de verdad?
           </h2>
           <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-            Primera sesión gratuita sin compromiso
+            Tu progreso arranca con una valoración profesional 100% online. Es gratis, pero no apta para vagos.
           </p>
           <Link href="/contacto">
             <Button variant="primary" size="lg">
-              Solicitar mi sesión gratis
+              🚀 Solicita tu valoración online gratis
             </Button>
           </Link>
         </Container>

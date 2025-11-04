@@ -26,17 +26,14 @@ export default function Header() {
         <div className="flex items-center justify-between h-24 md:h-28">
           {/* Logo - MUCHO MÁS GRANDE */}
           <Link href="/" className="flex items-center">
-<Link href="/" className="flex items-center">
-  <Image
-    src="/images/logos/WR_AUX_normal_bg.png"
-    alt="WellnessReal Logo"
-    width={300}
-    height={90}
-    priority
-    className="object-contain"
-  />
-</Link>
-
+            <Image
+              src="/images/logos/WR_AUX_normal_bg.png"
+              alt="WellnessReal Logo"
+              width={300}
+              height={90}
+              priority
+              className="object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -56,10 +53,10 @@ export default function Header() {
           <div className="hidden lg:block">
             <Link
               href="/contacto"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-bold transition-all tracking-wide text-base"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-bold transition-all tracking-wide text-base hover:brightness-110"
               style={{ backgroundColor: '#FCEE21', color: '#16122B' }}
             >
-              Primera sesión gratis
+              🚀 Solicita tu valoración gratis
             </Link>
           </div>
 
@@ -93,11 +90,11 @@ export default function Header() {
               ))}
               <Link
                 href="/contacto"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-bold transition-all mt-2 tracking-wide text-base"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-bold transition-all mt-2 tracking-wide text-base hover:brightness-110"
                 style={{ backgroundColor: '#FCEE21', color: '#16122B' }}
                 onClick={() => setIsMenuOpen(false)}
               >
-                Primera sesión gratis
+                🚀 Solicita tu valoración gratis
               </Link>
             </div>
           </nav>
