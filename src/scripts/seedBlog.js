@@ -1,8 +1,27 @@
 const mongoose = require('mongoose')
-const Post = require('../models/Post').default
 
+// Connection string
 const MONGODB_URI = 'mongodb+srv://fernandoroyano_db_user:aYDFIcokXgY5NwVq@wellnessreal.rftvttd.mongodb.net/wellnessreal?appName=wellnessreal'
+// Schema del Post
+const PostSchema = new mongoose.Schema(
+  {
+    slug: { type: String, required: true, unique: true },
+    title: { type: String, required: true },
+    excerpt: { type: String, required: true },
+    content: { type: String, required: true },
+    category: { type: String, required: true },
+    author: { type: String, required: true },
+    date: { type: Date, default: Date.now },
+    readTime: { type: String, required: true },
+    image: { type: String },
+    published: { type: Boolean, default: true },
+  },
+  { timestamps: true }
+)
 
+const Post = mongoose.models.Post || mongoose.model('Post', PostSchema)
+
+// Datos de los posts
 const posts = [
   {
     slug: 'estrenimiento-integral',
@@ -81,7 +100,7 @@ async function seed() {
     console.log('🗑️  BD limpiada')
     
     await Post.insertMany(posts)
-    console.log('✅ Posts insertados')
+    console.log('✅ 6 Posts insertados correctamente')
     
     process.exit(0)
   } catch (error) {
