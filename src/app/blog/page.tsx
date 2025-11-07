@@ -1,138 +1,132 @@
 import Container from '@/components/common/Container'
 import Button from '@/components/ui/Button'
 import Link from 'next/link'
-import { Clock, User, ArrowRight } from 'lucide-react'
+import { Calendar, User, Clock, ArrowLeft } from 'lucide-react'
 
-async function getAllPosts() {
+async function getPost(slug: string) {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/blog`, {
-      cache: 'no-store'
-    })
-    
-    if (!res.ok) return []
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/blog/${slug}`,
+      { cache: 'no-store' }
+    )
+    if (!res.ok) return null
     return res.json()
   } catch (error) {
-    console.error('Error fetching posts:', error)
-    return []
+    console.error('Error fetching post:', error)
+    return null
   }
 }
 
-export default async function BlogPage() {
-  const allPosts = await getAllPosts()
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const resolvedParams = await params
+  const post = await getPost(resolvedParams.slug)
+
+  if (!post) {
+    return (
+      <section style={{ backgroundColor: '#16122B' }} className="min-h-screen py-32">
+        <Container className="text-center">
+          <h1 style={{ color: '#FCEE21' }} className="text-5xl font-bold mb-6">
+            Artículo no encontrado
+          </h1>
+          <p className="text-gray-400 text-xl mb-10">
+            Parece que este artículo no existe. Vuelve al blog y explora más contenido.
+          </p>
+          <Link href="/blog">
+            <Button variant="primary" size="lg">
+              ← Volver al blog
+            </Button>
+          </Link>
+        </Container>
+      </section>
+    )
+  }
 
   return (
     <>
-      {/* Hero */}
       <section style={{ backgroundColor: '#16122B' }} className="py-20 md:py-32">
         <Container>
+          <Link
+            href="/blog"
+            className="flex items-center gap-2 text-gray-400 hover:text-white mb-8 transition font-bold"
+          >
+            <ArrowLeft size={20} />
+            Volver al blog
+          </Link>
           <div className="max-w-4xl">
-            <h1 style={{ color: '#FCEE21' }} className="text-5xl md:text-7xl font-bold mb-6 tracking-widest">
-              BLOG
+            <h1
+              style={{ color: '#FCEE21' }}
+              className="text-5xl md:text-6xl font-bold mb-6 tracking-widest"
+            >
+              {post.title}
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
-              Artículos sin humo, tips reales y estrategias que funcionan. Nutrición, entrenamiento y bienestar integral.
-            </p>
+            <div className="flex flex-wrap items-center gap-6 text-gray-400">
+              <span className="flex items-center gap-2">
+                <User size={18} />
+                {post.author}
+              </span>
+              <span className="flex items-center gap-2">
+                <Calendar size={18} />
+                {new Date(post.date).toLocaleDateString('es-ES')}
+              </span>
+              <span className="flex items-center gap-2">
+                <Clock size={18} />
+                {post.readTime}
+              </span>
+              <span
+                style={{ backgroundColor: 'rgba(252, 238, 33, 0.1)', color: '#FCEE21' }}
+                className="text-xs font-bold px-3 py-1 rounded-full"
+              >
+                {post.category}
+              </span>
+            </div>
           </div>
         </Container>
       </section>
 
-      {/* Articles Grid */}
       <section style={{ backgroundColor: '#16122B' }} className="py-20 md:py-28">
         <Container>
-          {allPosts.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-              {allPosts.map((article: any) => (
-                <Link key={article._id} href={`/blog/${article.slug}`}>
-                  <div 
-                    className="h-full p-8 rounded-xl hover:shadow-xl transition-all cursor-pointer group border hover:border-[#FCEE21]"
-                    style={{ backgroundColor: '#1a1535', borderColor: '#662D91' }}
-                  >
-                    <div className="mb-4">
-                      <span 
-                        className="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-wide"
-                        style={{ backgroundColor: 'rgba(252, 238, 33, 0.1)', color: '#FCEE21' }}
-                      >
-                        {article.category}
-                      </span>
-                    </div>
-
-                    <h2 style={{ color: '#FCEE21' }} className="text-xl font-bold mb-3 tracking-wide leading-tight group-hover:text-yellow-300 transition">
-                      {article.title}
-                    </h2>
-
-                    <p className="text-gray-300 text-sm mb-6 leading-relaxed">
-                      {article.excerpt}
-                    </p>
-
-                    <div className="flex items-center justify-between text-xs text-gray-500 mb-6 pb-6 border-b" style={{ borderBottomColor: '#662D91' }}>
-                      <div className="flex items-center gap-2">
-                        <Clock size={14} />
-                        <span>{article.readTime}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <User size={14} />
-                        <span>{article.author}</span>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-2" style={{ color: '#FCEE21' }}>
-                      <span className="font-bold text-sm">Leer más</span>
-                      <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-20">
-              <p style={{ color: '#FCEE21' }} className="text-xl font-bold">
-                No hay artículos disponibles.
-              </p>
-            </div>
-          )}
-        </Container>
-      </section>
-
-      {/* Newsletter */}
-      <section style={{ backgroundColor: '#1a1535' }} className="py-20">
-        <Container>
-          <div className="max-w-2xl mx-auto text-center p-12 rounded-xl" style={{ backgroundColor: '#16122B', border: '2px solid #FCEE21' }}>
-            <h2 style={{ color: '#FCEE21' }} className="text-3xl md:text-4xl font-bold mb-6 tracking-wide">
-              Recibe contenido exclusivo
-            </h2>
-            <p className="text-gray-300 text-lg mb-8">
-              Suscríbete y recibe tips, hacks y estrategias que no compartimos en el blog. Sin spam, solo contenido brutal.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="tu@email.com"
-                style={{ backgroundColor: 'rgba(252, 238, 33, 0.1)', borderColor: '#FCEE21' }}
-                className="flex-1 px-4 py-3 rounded-lg border text-white placeholder-gray-500 focus:outline-none focus:border-yellow-300 transition"
-              />
-              <Button variant="primary" size="lg">
-                Suscribirse
-              </Button>
-            </div>
+          <div className="max-w-3xl mx-auto">
+            <div
+              style={{ color: '#ffffff' }}
+              className="prose prose-invert max-w-none text-gray-300 leading-relaxed"
+              dangerouslySetInnerHTML={{
+                __html: post.content
+                  .replace(
+                    /<h2>/g,
+                    '<h2 style="color: #FCEE21; font-size: 1.875rem; font-weight: bold; margin-top: 2rem; margin-bottom: 1rem;">'
+                  )
+                  .replace(/<p>/g, '<p style="margin-bottom: 1rem; line-height: 1.6;">'),
+              }}
+            />
           </div>
         </Container>
       </section>
 
-      {/* CTA */}
-      <section style={{ backgroundColor: '#16122B' }} className="py-20">
-        <Container className="text-center">
-          <h2 style={{ color: '#FCEE21' }} className="text-4xl font-bold mb-4 tracking-wide">
-            ¿Te identificas con alguno de estos temas?
+      <section style={{ backgroundColor: '#1a1535' }} className="py-20">
+        <Container className="text-center max-w-3xl mx-auto">
+          <h2 style={{ color: '#FCEE21' }} className="text-4xl font-bold mb-8 tracking-wide">
+            ¿Te resonó este artículo?
           </h2>
-          <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
-            El blog es solo la base. Una valoración profesional te muestra exactamente cómo aplicar esto a tu caso.
+          <p className="text-xl text-gray-300 mb-10">
+            Esto que lees aquí es solo contenido. Una valoración profesional analiza TU caso y
+            diseña un plan 100% personalizado.
           </p>
-          <Link href="/contacto">
-            <Button variant="primary" size="lg">
-              🚀 Solicita tu valoración gratis
-            </Button>
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/contacto">
+              <Button variant="primary" size="lg">
+                🚀 Solicita tu valoración gratis
+              </Button>
+            </Link>
+            <Link href="/blog">
+              <Button variant="outline" size="lg">
+                Ver más artículos
+              </Button>
+            </Link>
+          </div>
         </Container>
       </section>
     </>

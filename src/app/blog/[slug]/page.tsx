@@ -2,12 +2,26 @@ import Container from '@/components/common/Container'
 import Button from '@/components/ui/Button'
 import Link from 'next/link'
 import { Calendar, User, Clock, ArrowLeft } from 'lucide-react'
-import { getPostBySlug } from '@/lib/blogData'
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = getPostBySlug(params.slug)
+// Ahora sí, USAMOS LA API REAL
+async function getPost(slug: string) {
+  if (!slug) return null
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
+    const res = await fetch(`${baseUrl}/api/posts/${slug}`, { cache: 'no-store' })
+    if (!res.ok) return null
+    const data = await res.json()
+    return data.success ? data.data : null
+  } catch (error) {
+    console.error('Error fetching post:', error)
+    return null
+  }
+}
 
-  // Si no existe el post, muestra mensaje personalizado
+export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+  // Usar fetch en vez de datos locales mock
+  const post = await getPost(params.slug)
+
   if (!post) {
     return (
       <section style={{ backgroundColor: '#16122B' }} className="min-h-screen py-32">
