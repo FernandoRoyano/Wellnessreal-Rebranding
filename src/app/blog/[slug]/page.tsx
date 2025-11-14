@@ -2,7 +2,6 @@ import Container from '@/components/common/Container'
 import Button from '@/components/ui/Button'
 import Link from 'next/link'
 import { getPostBySlug, getAllPostSlugs } from '@/lib/posts'
-import { notFound } from 'next/navigation'
 import { ArrowLeft, Calendar, Clock, User } from 'lucide-react'
 import ReactMarkdown from 'react-markdown'
 
@@ -10,8 +9,9 @@ export async function generateStaticParams() {
   return getAllPostSlugs()
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const post = getPostBySlug(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params
+  const post = getPostBySlug(resolvedParams.slug)
   
   if (!post) {
     return {
@@ -25,8 +25,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = getPostBySlug(params.slug)
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params
+  const post = getPostBySlug(resolvedParams.slug)
 
   if (!post) {
     return (
