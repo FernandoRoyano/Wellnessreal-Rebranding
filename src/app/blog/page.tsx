@@ -4,13 +4,17 @@ import Link from 'next/link'
 import { Calendar, User, Clock, ArrowLeft } from 'lucide-react'
 
 async function getPost(slug: string) {
+  if (!slug) return null
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/blog/${slug}`,
-      { cache: 'no-store' }
-    )
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
+    const res = await fetch(`${baseUrl}/api/posts/${slug}`, { 
+      cache: 'no-store' 
+    })
+    
     if (!res.ok) return null
-    return res.json()
+    
+    const data = await res.json()
+    return data.success ? data.data : null
   } catch (error) {
     console.error('Error fetching post:', error)
     return null
@@ -47,6 +51,7 @@ export default async function BlogPostPage({
 
   return (
     <>
+      {/* Hero del Post */}
       <section style={{ backgroundColor: '#16122B' }} className="py-20 md:py-32">
         <Container>
           <Link
@@ -87,6 +92,7 @@ export default async function BlogPostPage({
         </Container>
       </section>
 
+      {/* Contenido del Post */}
       <section style={{ backgroundColor: '#16122B' }} className="py-20 md:py-28">
         <Container>
           <div className="max-w-3xl mx-auto">
@@ -106,6 +112,7 @@ export default async function BlogPostPage({
         </Container>
       </section>
 
+      {/* CTA Final */}
       <section style={{ backgroundColor: '#1a1535' }} className="py-20">
         <Container className="text-center max-w-3xl mx-auto">
           <h2 style={{ color: '#FCEE21' }} className="text-4xl font-bold mb-8 tracking-wide">

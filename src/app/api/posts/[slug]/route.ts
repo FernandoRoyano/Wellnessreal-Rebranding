@@ -1,16 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { dbConnect } from '@/lib/mongodb'
-import Post from '@/models/Post'
+import { dbConnect } from '../../../../lib/mongodb'
+import Post from '../../../../models/Post'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
-  const { slug } = params
+  // ✅ Cambio importante: await params
+  const { slug } = await params
 
   if (!slug || slug === 'undefined') {
     return NextResponse.json(
-      { success: false, error: 'Slug inválido o no proporcionado' },
+      { success: false, error: 'Slug inválido' },
       { status: 400 }
     )
   }
@@ -18,10 +19,7 @@ export async function GET(
   try {
     await dbConnect()
 
-    const post = await Post.findOne({
-      slug: slug as string,
-      published: true
-    }).lean()
+    const post = await Post.findOne({ slug, published: true }).lean()
 
     if (!post) {
       return NextResponse.json(
