@@ -253,7 +253,7 @@ export default function ContactoPage() {
               },
               {
                 q: '¿Dónde están ubicados?',
-                a: 'Estamos en San Fernando, 16 en Santander. Contamos con espacio para entrenamientos presenciales, osteopatía y consultas directas.'
+                a: 'Trabajamos 100% online y a domicilio en Madrid y alrededores. Entrenamientos personalizados, osteopatía y consultas directas donde tú estés.'
               },
               {
                 q: '¿Hacen consultas online?',
